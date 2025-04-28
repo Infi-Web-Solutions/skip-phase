@@ -8,11 +8,16 @@
 
                     
                     :for="`${wwElementState.name}-${uniqueId}-${option.label}`"
-                    :class="{ selected: option.value === value }"><input
-                        :id="`${wwElementState.name}-${uniqueId}-${option.label}`" :value="option.value"
-                        :checked="option.value === value" :hidden=true type="radio"
-                        :name="`${wwElementState.name}-${uniqueId}`" class="custom-radio-input"
-                        @input="handleManualInput($event)" />
+                    :class="{ selected: option.value === value }"><input 
+                        :id="`${wwElementState.name}-${uniqueId}-${option.label}`"
+                        :value="option.value"
+                        :checked="option.value === value"
+                        type="radio"
+                        :name="`${wwElementState.name}-${uniqueId}`"
+                        class="custom-radio-input visually-hidden"
+                        :required="content.required"
+                        @input="handleManualInput($event)" 
+                    />
                     {{ option.label }}
                 </label>
             </wwLayoutItemContext>
@@ -150,6 +155,10 @@ export default {
     }
 
     /* wwEditor:end */
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
 }
 
 .custom-radio-label {
