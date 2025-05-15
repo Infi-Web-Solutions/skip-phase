@@ -5,21 +5,20 @@
             <wwLayoutItemContext v-if="option" :index="index" is-repeat>
 
                 <label class="custom-radio-label" :style="option.value === value ? selectedStyles : null" 
-
-                    
                     :for="`${wwElementState.name}-${uniqueId}-${option.label}`"
-                    :class="{ selected: option.value === value }"><input 
-                        :id="`${wwElementState.name}-${uniqueId}-${option.label}`"
-                        :value="option.value"
-                        :checked="option.value === value"
-                        type="radio"
-                        :name="`${wwElementState.name}-${uniqueId}`"
-                        class="custom-radio-input visually-hidden"
-                        :required="content.required"
-                        @input="handleManualInput($event)" 
-                    />
+                    :class="{ selected: option.value === value }">
                     {{ option.label }}
                 </label>
+                <input 
+                    :id="`${wwElementState.name}-${uniqueId}-${option.label}`"
+                    :value="option.value"
+                    :checked="option.value === value"
+                    type="radio"
+                    :name="`${wwElementState.name}-${uniqueId}`"
+                    class="custom-radio-input visually-hidden"
+                    :required="content.required"
+                    @input="handleManualInput($event)" 
+                />
             </wwLayoutItemContext>
         </div>
     </div>
@@ -158,7 +157,7 @@ export default {
 }
 .visually-hidden {
   position: absolute;
-  width: 1px;
+  margin-left: 15px;
 }
 
 .custom-radio-label {
@@ -175,6 +174,7 @@ export default {
     text-align: left;
     cursor: pointer;
     transition: all 0.3s ease;
+    z-index: 9;
 }
 
 .custom-radio-label:hover {
